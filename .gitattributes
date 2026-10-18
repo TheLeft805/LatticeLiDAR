@@ -1,0 +1,3 @@
+# The frozen runtime hashes source bytes into every bitstream identity.
+# Disable newline conversion so Windows checkout cannot change compatibility.
+* -text
