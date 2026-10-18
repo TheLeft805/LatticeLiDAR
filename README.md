@@ -28,6 +28,10 @@ python -m pip install -r requirements.txt
 python -m pip install --no-build-isolation git+https://github.com/mit-han-lab/torchsparse.git@385f5ce8718fcae93540511b7f5832f4e71fd835
 ```
 
+## Dataset
+
+We use SemanticKITTI sequences **00–10 for training** and **11–21 for evaluation**. The reported evaluation samples every 20th frame from the globally sorted evaluation set, giving 1,018 frames per quantization scale.
+
 ## Usage
 
 The pre-trained weights are included in `./weights/` and loaded automatically. Input point clouds can be KITTI `.bin` files (float32 XYZ and reflectance) or `.npy` files containing an `N x 3` coordinate array. Coordinates are in meters; only geometry is compressed.

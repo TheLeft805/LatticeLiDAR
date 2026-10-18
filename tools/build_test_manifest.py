@@ -39,17 +39,13 @@ def build(root):
                 )
             )
     return dict(
-        schema="semantickitti-full-test-v1",
+        schema="semantickitti-full-test-v2",
         split="11-21",
+        training_sequences=[f"{number:02d}" for number in range(11)],
+        evaluation_sequences=[f"{number:02d}" for number in range(11, 22)],
         sampling="none",
         root=str(root),
         frames=frames,
-        exposure=dict(
-            development=["13", "15", "19"],
-            review=["14", "18", "21"],
-            freeze_before_test=["12", "16", "20"],
-            additional=["11", "17"],
-        ),
     )
 
 
