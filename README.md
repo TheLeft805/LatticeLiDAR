@@ -6,7 +6,7 @@ This repository provides the PyTorch implementation and pre-trained weights of L
 
 ## Environment Setup
 
-Linux, Python 3.10, PyTorch 2.2.1 and CUDA Toolkit 11.8 (including `nvcc` and a compatible C++ compiler).
+Linux, Python 3.10, PyTorch 2.2.1, CUDA Toolkit 11.8 and TorchSparse 2.1.0. The entropy backend requires an NVIDIA GPU with compute capability **8.9** (`sm_89`); the reference GPU is an **RTX 4090**.
 
 ```bash
 git clone https://github.com/TheLeft805/LatticeLiDAR.git
@@ -14,10 +14,18 @@ cd LatticeLiDAR
 
 conda create -n latticelidar python=3.10
 conda activate latticelidar
-pip install -r requirements.txt
 
 export CUDA_HOME=/usr/local/cuda-11.8
 export PATH="$CUDA_HOME/bin:$PATH"
+export CUBLAS_WORKSPACE_CONFIG=:4096:8
+export MAX_JOBS=2
+
+# System build dependencies (Ubuntu/Debian)
+sudo apt-get update
+sudo apt-get install -y build-essential libsparsehash-dev
+
+python -m pip install -r requirements.txt
+python -m pip install --no-build-isolation git+https://github.com/mit-han-lab/torchsparse.git@385f5ce8718fcae93540511b7f5832f4e71fd835
 ```
 
 ## Usage
