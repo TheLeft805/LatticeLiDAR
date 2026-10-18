@@ -61,7 +61,7 @@ class GeometryCodec:
         self.model.readout_executor = ReadoutExecutor(self.model.readout)
         self.plan = (
             json.loads(
-                (Path(__file__).parents[1] / "configs/semantickitti.json").read_text()
+                (Path(__file__).parents[1] / f"configs/q{quantization_mm}.json").read_text()
             )
             if profile is None
             else profile

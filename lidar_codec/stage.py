@@ -664,6 +664,8 @@ class StageExecutor:
             raise ValueError("This model codes independent frames")
         if depth == 0:
             self.frame_index += 1
+            # Keep only the current frame; previously returned stats stay intact.
+            self.records = []
         self.max_rows[scale] = max(self.max_rows.get(scale, 0), len(coords))
         bucket = next(
             (
