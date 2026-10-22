@@ -1,0 +1,6 @@
+# Frozen inference environment. See SECURITY.md before loading checkpoints.
+torch==2.2.1+cu118
+torchvision==0.17.1+cu118
+numpy==1.26.4
+triton==2.2.0
+ninja==1.13.2

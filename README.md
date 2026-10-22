@@ -4,6 +4,10 @@
 
 This repository provides the PyTorch implementation and pre-trained weights of LatticeLiDAR for LiDAR point cloud geometry compression.
 
+## Security and supported scope
+
+This is a frozen research inference environment, not a hardened service for arbitrary uploads. The pinned PyTorch version is affected by checkpoint-loading advisories even with `weights_only=True`. Use only the published weights from a trusted checkout; do not load third-party checkpoints. The release CLI and GPU regression entry point verify weight hashes against `ASSETS.json` before model loading. This does not patch PyTorch or protect a compromised checkout. See [SECURITY.md](SECURITY.md).
+
 ## Environment Setup
 
 Linux, Python 3.10, PyTorch 2.2.1, CUDA Toolkit 11.8 and TorchSparse 2.1.0. The entropy backend requires an NVIDIA GPU with compute capability **8.9** (`sm_89`); the reference GPU is an **RTX 4090**.
@@ -25,7 +29,7 @@ sudo apt-get update
 sudo apt-get install -y build-essential libsparsehash-dev
 
 python -m pip install -r requirements.txt
-python -m pip install --no-build-isolation git+https://github.com/mit-han-lab/torchsparse.git@385f5ce8718fcae93540511b7f5832f4e71fd835
+python -m pip install -c constraints.txt --extra-index-url https://download.pytorch.org/whl/cu118 --no-build-isolation git+https://github.com/mit-han-lab/torchsparse.git@385f5ce8718fcae93540511b7f5832f4e71fd835
 ```
 
 ## Dataset
@@ -77,6 +81,10 @@ python decode.py \
     --sequence 11 \
     --quantization-mm 16
 ```
+
+## Maintenance and regression checks
+
+See [VALIDATION.md](VALIDATION.md) for CPU checks, complete GPU regression runs, dataset manifests and known verification limits. Numerical sources, weights and codec identity remain frozen at the 0.1.1 snapshot; tooling changes do not assert new GPU validation. See [COMPATIBILITY.md](COMPATIBILITY.md) before changing dependencies or the numerical implementation.
 
 ## Acknowledgements
 

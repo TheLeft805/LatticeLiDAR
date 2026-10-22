@@ -15,6 +15,9 @@ def add_model_arguments(parser):
 
 def create_codec(args, *, decoding=False):
     """Load the frozen GELU head and the matching profile; requires Linux/CUDA."""
+    from trusted_assets import verify_release_assets
+
+    verify_release_assets(args.checkpoint, args.heads)
     from reconstruction_codec import ReconstructionCodec
 
     profile = json.loads((ROOT / f"configs/q{args.quantization_mm}.json").read_text())

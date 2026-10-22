@@ -1,5 +1,7 @@
 --extra-index-url https://download.pytorch.org/whl/cu118
-torch==2.2.1+cu118
-numpy==1.26.4
-triton==2.2.0
-ninja==1.13.2
+-c constraints.txt
+torch
+torchvision
+numpy
+triton
+ninja
