@@ -6,7 +6,7 @@ This repository provides the PyTorch implementation and pre-trained weights of L
 
 ## Security and supported scope
 
-This is a frozen research inference environment, not a hardened service for arbitrary uploads. The pinned PyTorch version is affected by checkpoint-loading advisories even with `weights_only=True`. Use only the published weights from a trusted checkout; do not load third-party checkpoints. The release CLI and GPU regression entry point verify weight hashes against `ASSETS.json` before model loading. This does not patch PyTorch or protect a compromised checkout. See [SECURITY.md](SECURITY.md).
+This is a frozen research inference environment, not a hardened service for arbitrary uploads. The pinned PyTorch version is affected by checkpoint-loading advisories even with `weights_only=True`. Use only the published weights from a trusted checkout; do not load third-party checkpoints. The release CLI and GPU regression entry point verify weight hashes against `ASSETS.json` before model loading. This does not patch PyTorch or protect a compromised checkout.
 
 ## Environment Setup
 
@@ -84,7 +84,7 @@ python decode.py \
 
 ## Maintenance and regression checks
 
-See [VALIDATION.md](VALIDATION.md) for CPU checks, complete GPU regression runs, dataset manifests and known verification limits. Numerical sources, weights and codec identity remain frozen at the 0.1.1 snapshot; tooling changes do not assert new GPU validation. See [COMPATIBILITY.md](COMPATIBILITY.md) before changing dependencies or the numerical implementation.
+Numerical sources, weights and codec identity remain frozen at the 0.1.1 snapshot; tooling changes do not assert new GPU validation.
 
 ## Acknowledgements
 
